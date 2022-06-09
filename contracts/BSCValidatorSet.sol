@@ -33,7 +33,8 @@ contract BSCValidatorSet is IBSCValidatorSet, System, IParamSubscriber, IApplica
   uint256 public constant EXPIRE_TIME_SECOND_GAP = 1000;
   uint256 public constant MAX_NUM_OF_VALIDATORS = 41;
 
-  bytes public constant INIT_VALIDATORSET_BYTES = hex"f84580f842f840949fb29aac15b9a4b7f17c3385939b007540f4d791949fb29aac15b9a4b7f17c3385939b007540f4d791949fb29aac15b9a4b7f17c3385939b007540f4d79164";
+  bytes public constant INIT_VALIDATORSET_BYTES = hex"f87680f873f871949fb29aac15b9a4b7f17c3385939b007540f4d791949fb29aac15b9a4b7f17c3385939b007540f4d791949fb29aac15b9a4b7f17c3385939b007540f4d79164b085e6972fc98cd3c81d64d40e325acfed44365b97a7567a27939c14dbc7512ddcf54cb1284eb637cfa308ae4e00cb5588";
+
   uint32 public constant ERROR_UNKNOWN_PACKAGE_TYPE = 101;
   uint32 public constant ERROR_FAIL_CHECK_VALIDATORS = 102;
   uint32 public constant ERROR_LEN_OF_VAL_MISMATCH = 103;
@@ -697,7 +698,7 @@ contract BSCValidatorSet is IBSCValidatorSet, System, IParamSubscriber, IApplica
     } else if (Memory.compareStrings(key, "finalityRewardRatio")) {
       require(value.length == 32, "length of finalityRewardRatio mismatch");
       uint256 newFinalityRewardRatio = BytesToTypes.bytesToUint256(32, value);
-      require(newFinalityRewardRatio >= 1 && newFinalityRewardRatio < 100, "the finalityRewardRatio is out of range");
+      require(newFinalityRewardRatio >= 1 && newFinalityRewardRatio < 100, "the finality reward ratio out of range!");
       finalityRewardRatio = newFinalityRewardRatio;
     } else {
       require(false, "unknown param");
